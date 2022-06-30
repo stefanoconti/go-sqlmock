@@ -28,19 +28,19 @@ to person or an organization motivated to maintain it. Open up a conversation if
 
 ## Install
 
-    go get github.com/DATA-DOG/go-sqlmock
+    go get github.com/stefanoconti/go-sqlmock
 
 ## Documentation and Examples
 
-Visit [godoc](http://godoc.org/github.com/DATA-DOG/go-sqlmock) for general examples and public api reference.
+Visit [godoc](http://godoc.org/github.com/stefanoconti/go-sqlmock) for general examples and public api reference.
 See **.travis.yml** for supported **go** versions.
 Different use case, is to functionally test with a real database - [go-txdb](https://github.com/DATA-DOG/go-txdb)
 all database related actions are isolated within a single transaction so the database can remain in the same state.
 
 See implementation examples:
 
-- [blog API server](https://github.com/DATA-DOG/go-sqlmock/tree/master/examples/blog)
-- [the same orders example](https://github.com/DATA-DOG/go-sqlmock/tree/master/examples/orders)
+- [blog API server](https://github.com/stefanoconti/go-sqlmock/tree/master/examples/blog)
+- [the same orders example](https://github.com/stefanoconti/go-sqlmock/tree/master/examples/orders)
 
 ### Something you may want to test, assuming you use the [go-mysql-driver](https://github.com/go-sql-driver/mysql)
 
@@ -179,7 +179,7 @@ provide a standard sql parsing matchers, since various drivers may not follow th
 ## Matching arguments like time.Time
 
 There may be arguments which are of `struct` type and cannot be compared easily by value like `time.Time`. In this case
-**sqlmock** provides an [Argument](https://godoc.org/github.com/DATA-DOG/go-sqlmock#Argument) interface which
+**sqlmock** provides an [Argument](https://godoc.org/github.com/stefanoconti/go-sqlmock#Argument) interface which
 can be used in more sophisticated matching. Here is a simple example of time argument matching:
 
 ``` go
