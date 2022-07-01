@@ -1,4 +1,4 @@
-module github.com/stefanoconti/go-sqlmock
+module github.com/DATA-DOG/go-sqlmock
 
 go 1.15
 
