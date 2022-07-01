@@ -1,3 +1,4 @@
+//go:build go1.9
 // +build go1.9
 
 package sqlmock
@@ -13,7 +14,11 @@ func (c *sqlmock) CheckNamedValue(nv *driver.NamedValue) (err error) {
 	case sql.Out:
 		return nil
 	default:
-		nv.Value, err = c.converter.ConvertValue(nv.Value)
-		return err
+		if checkReturnStatusParam(nv.Value) {
+			return nil
+		} else {
+			nv.Value, err = c.converter.ConvertValue(nv.Value)
+			return err
+		}
 	}
 }

@@ -1,3 +1,4 @@
+//go:build go1.8
 // +build go1.8
 
 package sqlmock
@@ -253,6 +254,9 @@ func (c *sqlmock) query(query string, args []driver.NamedValue) (*ExpectedQuery,
 	if expected.rows == nil {
 		return nil, fmt.Errorf("Query '%s' with args %+v, must return a database/sql/driver.Rows, but it was not set for expectation %T as %+v", query, args, expected, expected)
 	}
+
+	setReturnStatus(args, expected.rs)
+
 	return expected, nil
 }
 
@@ -335,6 +339,8 @@ func (c *sqlmock) exec(query string, args []driver.NamedValue) (*ExpectedExec, e
 	if expected.result == nil {
 		return nil, fmt.Errorf("ExecQuery '%s' with args %+v, must return a database/sql/driver.Result, but it was not set for expectation %T as %+v", query, args, expected, expected)
 	}
+
+	setReturnStatus(args, expected.rs)
 
 	return expected, nil
 }

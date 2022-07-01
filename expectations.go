@@ -131,6 +131,11 @@ type ExpectedQuery struct {
 	rowsWereClosed   bool
 }
 
+func (e *ExpectedQuery) WillReturnStatus(rs int32) *ExpectedQuery {
+	e.rs = rs
+	return e
+}
+
 // WithArgs will match given expected args to actual database query arguments.
 // if at least one argument does not match, it will return an error. For specific
 // arguments an sqlmock.Argument interface can be used to match an argument.
@@ -190,6 +195,11 @@ type ExpectedExec struct {
 	queryBasedExpectation
 	result driver.Result
 	delay  time.Duration
+}
+
+func (e *ExpectedExec) WillReturnStatus(rs int32) *ExpectedExec {
+	e.rs = rs
+	return e
 }
 
 // WithArgs will match given expected args to actual database exec operation arguments.
@@ -338,6 +348,7 @@ type queryBasedExpectation struct {
 	expectSQL string
 	converter driver.ValueConverter
 	args      []driver.Value
+	rs        int32
 }
 
 // ExpectedPing is used to manage *sql.DB.Ping expectations.
