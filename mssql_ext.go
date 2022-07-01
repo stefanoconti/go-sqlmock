@@ -11,9 +11,9 @@ func checkReturnStatusParam(v driver.Value) bool {
 	return reflect.TypeOf(v).String() == returnStatusParamType
 }
 
-func setReturnStatus(args []driver.NamedValue, expectedReturnStatus int32) {
+func setReturnStatus(args []driver.NamedValue, rs int32) {
 	argsCount := len(args)
 	if argsCount > 0 && checkReturnStatusParam(args[argsCount-1].Value) {
-		reflect.ValueOf(args[argsCount-1].Value).Elem().SetInt(int64(expectedReturnStatus))
+		reflect.ValueOf(args[argsCount-1].Value).Elem().SetInt(int64(rs))
 	}
 }

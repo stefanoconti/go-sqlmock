@@ -132,7 +132,7 @@ type ExpectedQuery struct {
 }
 
 func (e *ExpectedQuery) WillReturnStatus(rs int32) *ExpectedQuery {
-	e.rs = rs
+	e.rs = &rs
 	return e
 }
 
@@ -198,7 +198,7 @@ type ExpectedExec struct {
 }
 
 func (e *ExpectedExec) WillReturnStatus(rs int32) *ExpectedExec {
-	e.rs = rs
+	e.rs = &rs
 	return e
 }
 
@@ -348,7 +348,7 @@ type queryBasedExpectation struct {
 	expectSQL string
 	converter driver.ValueConverter
 	args      []driver.Value
-	rs        int32
+	rs        *int32
 }
 
 // ExpectedPing is used to manage *sql.DB.Ping expectations.
