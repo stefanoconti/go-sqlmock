@@ -251,6 +251,7 @@ func (c *sqlmock) query(query string, args []driver.NamedValue) (*ExpectedQuery,
 		return expected, expected.err // mocked to return error
 	}
 
+	// mssql_ext: set return status expected value
 	if expected.rs != nil {
 		setReturnStatus(args, *expected.rs)
 	}
@@ -338,6 +339,7 @@ func (c *sqlmock) exec(query string, args []driver.NamedValue) (*ExpectedExec, e
 		return expected, expected.err // mocked to return error
 	}
 
+	// mssql_ext: set return status expected value
 	if expected.rs != nil {
 		setReturnStatus(args, *expected.rs)
 	}

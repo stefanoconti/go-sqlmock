@@ -28,7 +28,7 @@ to person or an organization motivated to maintain it. Open up a conversation if
 
 ## Install
 
-    go get github.com/stefanoconti/go-sqlmock
+    go get github.com/DATA-DOG/go-sqlmock
 
 ## Documentation and Examples
 
@@ -39,8 +39,8 @@ all database related actions are isolated within a single transaction so the dat
 
 See implementation examples:
 
-- [blog API server](https://github.com/stefanoconti/go-sqlmock/tree/master/examples/blog)
-- [the same orders example](https://github.com/stefanoconti/go-sqlmock/tree/master/examples/orders)
+- [blog API server](https://github.com/DATA-DOG/go-sqlmock/tree/master/examples/blog)
+- [the same orders example](https://github.com/DATA-DOG/go-sqlmock/tree/master/examples/orders)
 
 ### Something you may want to test, assuming you use the [go-mysql-driver](https://github.com/go-sql-driver/mysql)
 
