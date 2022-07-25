@@ -22,7 +22,7 @@ func (e *ExpectedExec) WillReturnStatus(rs int32) *ExpectedExec {
 }
 
 func checkReturnStatusParam(v driver.Value) bool {
-	return reflect.TypeOf(v).String() == returnStatusParamType
+	return v != nil && reflect.TypeOf(v).String() == returnStatusParamType
 }
 
 func setReturnStatus(args []driver.NamedValue, rs int32) {
