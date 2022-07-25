@@ -1,3 +1,4 @@
+//go:build go1.8
 // +build go1.8
 
 package sqlmock
@@ -29,6 +30,10 @@ func (e *ExpectedQuery) WillReturnRows(rows ...*Rows) *ExpectedQuery {
 }
 
 func (e *queryBasedExpectation) argsMatches(args []driver.NamedValue) error {
+
+	// mssql_ext: remove return status param
+	args = filterReturnStatusParam(args)
+
 	if nil == e.args {
 		return nil
 	}

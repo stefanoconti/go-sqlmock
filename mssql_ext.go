@@ -31,3 +31,12 @@ func setReturnStatus(args []driver.NamedValue, rs int32) {
 		reflect.ValueOf(args[argsCount-1].Value).Elem().SetInt(int64(rs))
 	}
 }
+
+func filterReturnStatusParam(args []driver.NamedValue) (ret []driver.NamedValue) {
+	for _, a := range args {
+		if !checkReturnStatusParam(a.Value) {
+			ret = append(ret, a)
+		}
+	}
+	return ret
+}
